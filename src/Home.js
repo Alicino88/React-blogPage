@@ -23,19 +23,25 @@ const Home = () => {
     },
   ]);
 
+  /*The function below deletes the blogs when clicking on the button
+  it doesn't change the original data but it returns a new array*/
+  const handleDelete = (id) => {
+    /*the new array includes all the blog posts whose id is different from the one of the post we have clicked on the delete button*/
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
+    /*we set the state so that React triggers the re-render of the template displaying all the blog posts but the one which has been deleted*/
+    setBlogs(newBlogs);
+  };
   return (
     <div className="home">
       {/*below we are outputting all the blogs*/}
       {blogs.map((blog) => (
-        <BlogList id={blog.id} title={blog.title} author={blog.author} />
+        <BlogList
+          id={blog.id}
+          title={blog.title}
+          author={blog.author}
+          handleDelete={handleDelete}
+        />
       ))}
-      {/*below we are outputting only the blogs with the author Alice. Note that after filtering through the array,
-       you still need to appply the map method to display the blogs*/}
-      {blogs
-        .filter((blog) => blog.author === "alice")
-        .map((blog) => (
-          <BlogList id={blog.id} title={blog.title} author={blog.author} />
-        ))}
     </div>
   );
 };
