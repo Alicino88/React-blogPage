@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
 * {
   margin: 0;
-  font-family: "Quicksand";
+  font-family: "Syne Mono";
   color: #333;
 }
 
@@ -15,7 +15,7 @@
   border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
-  color: #f1356d;
+  color: #cc5803;
 }
 
 /*This moves the links all the way to the right
@@ -31,7 +31,7 @@ to the end of the navbar since the parent is displayed as flex*/
 }
 
 .navbar a:hover {
-  color: #f1356d;
+  color: #cc5803;
 }
 
 .content {
@@ -52,6 +52,6 @@ to the end of the navbar since the parent is displayed as flex*/
 
 .blog-preview h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #cc5803;
   margin-bottom: 8px;
 }

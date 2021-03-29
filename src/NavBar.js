@@ -11,7 +11,7 @@ function NavBar() {
           note. The value is always a string and minus sign cannot be used, instead camelcase*/
           style={{
             color: "white",
-            backgroundColor: "#f1356d",
+            backgroundColor: "#CC5803",
             borderRadius: "8px",
           }}
         >
