@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "title": "Blog1",
+      "content": "Ciao Ciao ciao ciao ciao ciao",
+      "author": "alice",
+      "id": 1
+    },
+    {
+      "title": "Blog2",
+      "content": "Ciao Ciao ciao ciao ciao ciao",
+      "author": "mario",
+      "id": 2
+    },
+    {
+      "title": "Blog3",
+      "content": "Ciao Ciao ciao ciao ciao ciao",
+      "author": "mario",
+      "id": 3
+    }
+  ]
+}
