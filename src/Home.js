@@ -3,6 +3,7 @@ import BlogList from "./BlogList";
 
 const Home = () => {
   const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
   /*The function below deletes the blogs when clicking on the button
   it doesn't change the original data but it returns a new array
@@ -21,6 +22,9 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         setBlogs(data);
+        /*once the blogs are set as the current state, and therefore are being shown in the browser,
+        we change isPending to false so that the loading message is not shown anymore*/
+        setIsPending(false);
       });
   }, []);
   return (
@@ -33,6 +37,8 @@ const Home = () => {
       that is true then it will bother executing the rest of the code
       null is equal to false so the map function wont run until the
       actual blogs are fetched. */}
+      {/*below we show a message while the blogs are being fetched*/}
+      {isPending && <div>Loading posts...</div>}
       {blogs &&
         blogs.map((blog) => (
           <BlogList id={blog.id} title={blog.title} author={blog.author} />
