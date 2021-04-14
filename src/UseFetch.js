@@ -18,8 +18,10 @@ const useFetch = (url) => {
   };*/
 
   useEffect(() => {
-    fetch(url)
+    const abortCont = new AbortController();
+    fetch(url, { signal: abortCont.signal })
       .then((res) => {
+        console.log(res);
         /*below we detect errors in case we get a response which is empty
           or has some other error*/
         if (!res.ok) {
@@ -38,9 +40,16 @@ const useFetch = (url) => {
       })
       /*below will catch the network errors, for example if we cannot connect to the server*/
       .catch((err) => {
-        setIsPending(false);
-        setIsError(err.message);
+        if (err.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          setIsPending(false);
+          setIsError(err.message);
+        }
       });
+    /*the below aborts the fetch for the home component*/
+
+    return () => abortCont.abort();
     /*we add url as a dependency so that when the url changes the useEffect
       function is being run*/
   }, [url]);
