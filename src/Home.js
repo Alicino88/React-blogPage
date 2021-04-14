@@ -12,13 +12,13 @@ const Home = () => {
       How it works is that it checks what is on the left of the && and if
       that is true then it will bother executing the rest of the code
       null is equal to false so the map function wont run until the
-      actual blogs are fetched. */}
+      actual blogs are fetched. It is called conditional templating */}
       {/*below we show a message while the blogs are being fetched*/}
       {isError && <div>{isError}</div>}
       {isPending && <div>Loading posts...</div>}
       {data &&
-        data.map((blog) => (
-          <BlogList id={blog.id} title={blog.title} author={blog.author} />
+        data.map((data) => (
+          <BlogList id={data.id} title={data.title} author={data.author} />
         ))}
     </div>
   );
