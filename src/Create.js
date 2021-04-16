@@ -1,14 +1,22 @@
 import { useState } from "react";
 
 const Create = () => {
-  /*below I create a state variable to store the value of the title*/
+  /*below a state variable is created to store the value of the title
+  The idea is to create a state variable for all the different elements we type in*/
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("Mario");
+  const handleSubmit = (e) => {
+    //normally when you click on the button the page refresh, by adding the below we prevent this behaviour
+    e.preventDefault();
+    //we create a new object below which contains the state variables we have created above
+    const blog = { title, body, author };
+    console.log(blog);
+  };
   return (
     <div className="create">
       <h2>Add a new blog</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Blog title:</label>
         {/* To make sure the input is stored in the state variable "title" I put this as value*/}
         {/* setTitle sets the actual title equal to what we are typing. This function is triggered whenever we type on this input field*/}
