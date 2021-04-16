@@ -6,12 +6,22 @@ const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("Mario");
+  //the state variable below is to conditionally render a different button while the post is being submitted
+  const [isPending, setIsPending] = useState(false);
   const handleSubmit = (e) => {
-    //normally when you click on the button the page refresh, by adding the below we prevent this behaviour
+    //normally when clicking on the button, the page refreshes, by adding the below we prevent this behaviour
     e.preventDefault();
     //we create a new object below which contains the state variables we have created above
     const blog = { title, body, author };
-    console.log(blog);
+    setIsPending(true);
+    fetch("http://localhost:8000/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog),
+    }).then(() => {
+      console.log("new blog added");
+      setIsPending(false);
+    });
   };
   return (
     <div className="create">
@@ -37,7 +47,10 @@ const Create = () => {
           <option value="Alice">Alice</option>
           <option value="Mario">Mario</option>
         </select>
-        <button>Add blog</button>
+        {/*when isPending is false then the button is rendered */}
+        {!isPending && <button>Add blog</button>}
+        {/*when isPending is true then the Adding blog button is rendered */}
+        {isPending && <button disabled>Adding blog...</button>}
         <p>{title}</p>
         <p>{body}</p>
         <p>{author}</p>
